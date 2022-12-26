@@ -2,3 +2,4 @@
 #### 12/26
 217. Contains Duplicate
 242. Valid Anagram
+1. Two Sum
