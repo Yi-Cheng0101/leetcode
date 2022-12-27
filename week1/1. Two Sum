@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        unordered_map<int, int> record_map;
+        for(int i=0; i<nums.size(); i++){
+           if(record_map.find(target-nums[i])!=record_map.end()){
+             ans.push_back(i);
+             ans.push_back(record_map[target-nums[i]]);
+           }
+           record_map.insert({nums[i], i});
+        }
+        return ans;
+    }
+};
