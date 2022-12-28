@@ -1,0 +1,18 @@
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *new_head = NULL;
+        ListNode *tmp = head;
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+        while(tmp!=NULL){
+           if(tmp->next==NULL){
+              new_head = tmp;
+              
+           }
+           tmp = tmp->next;
+        }
+
+        return new_head;
+};
