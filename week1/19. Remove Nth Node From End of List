@@ -1,0 +1,28 @@
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        vector<ListNode*> record;
+        ListNode *tmp = head;
+        while(tmp!=NULL){
+            record.push_back(tmp);
+            tmp = tmp->next;
+        }
+        int index = record.size()-n;
+        if(record.size()==1){
+           return NULL;
+        }
+        if(n == 1){
+           record[index-1]->next = NULL;
+        }
+        if(index == 0){
+           head = head->next;
+        }
+        if(index == record.size()-1){
+           record[index-1]->next = NULL;
+        }
+        if(0<index && index<record.size()-1){
+           record[index-1]->next = record[index]->next;
+        }
+        return head;
+    }
+};
