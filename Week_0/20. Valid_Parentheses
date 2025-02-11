@@ -1,0 +1,22 @@
+// https://leetcode.com/problems/valid-parentheses/description/
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> list;
+        for(char c : s){
+            if(c == '(' || c == '[' || c == '{'){
+                list.push(c);
+            } else {
+                if (list.empty()) return false;
+                if( (c == ')' && list.top() == '(') ||
+                    (c == ']' && list.top() == '[') ||
+                    (c == '}' && list.top() == '{')){
+                        list.pop();
+                } else {
+                    return false;
+                }
+            }    
+        }
+        return list.empty();
+    }
+};
