@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> subset;
+        // recursive func
+        // org vector, next level, number of nums, ans
+        dfs(nums, 0, subset, res);
+        return res; 
+    }
+
+    void dfs(const vector<int> &nums, int level, vector<int>&
+    subset, vector<vector<int>>& res){
+        // end condition 
+        if(level == nums.size()){
+            res.push_back(subset);
+            return ;
+        }
+        // select
+        subset.push_back(nums[level]);
+        dfs(nums, level + 1, subset, res);
+        // don't select
+        subset.pop_back();
+        dfs(nums, level + 1, subset, res);
+    }
+};
