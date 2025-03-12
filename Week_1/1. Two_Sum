@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        // create an unordered map to store two params 
+        // 1. key: value of number 
+        // 2. idx: idx of the number in nums
+        unordered_map<int, int> map;
+        // ans
+        vector<int> ans;
+        // for loop takes o(n)
+        for(int i=0; i<nums.size(); i++){
+            if(map.count(target-nums[i])){
+                ans.push_back(map[target-nums[i]]);
+                ans.push_back(i);
+                return ans;
+            }else{
+                map.insert(make_pair(nums[i], i));
+            } 
+        }
+        return ans;
+    }
+};
