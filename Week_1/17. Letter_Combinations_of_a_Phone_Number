@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<string> ans;
+    vector<string> phone_map = {
+        "", "", "abc", "def", "ghi", "jkl",
+        "mno", "pqrs", "tuv", "wxyz"
+    };
+
+    vector<string> letterCombinations(string digits) {
+        if(digits.length() == 0) return ans;
+
+        backtrack(0, "", digits);
+        return ans;
+    }
+
+    void backtrack(int idx, string cur, string &digits){
+        if(idx == digits.length()){
+            ans.push_back(cur);
+            return ;
+        } 
+
+        string chars = phone_map[digits[idx]-'0'];
+        for(char c : chars){
+            backtrack(idx+1, cur + c, digits);
+        }
+        return ;
+    }
+};
