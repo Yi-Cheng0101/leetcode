@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> tmp;
+        backtrack(nums, 0, nums.size(), tmp);
+        return ans;
+    }
+
+    void backtrack(vector<int>& nums, int current, int end, vector<int>& tmp){
+        // end condition
+        if(current == end){
+            ans.push_back(tmp);
+            return ;
+        }
+        // select the current element
+        tmp.push_back(nums[current]);
+        backtrack(nums, current+1, end, tmp);
+        // don't select the current element
+        tmp.pop_back();
+        backtrack(nums, current+1, end, tmp);
+    }
+};
